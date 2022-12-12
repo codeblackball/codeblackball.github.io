@@ -16,29 +16,26 @@
   <meta name="author" content="code black-ball">
   <meta name="keywords" content="hexo,node,博客">
   
-    <meta name="description" content="VSCode安装、配置与使用 Vscode的 安装与基本配置   官方下载网址：https:&#x2F;&#x2F;code.visualstudio.com&#x2F;download# 注意路径设置、环境变量配置，安装教程：https:&#x2F;&#x2F;www.cnblogs.com&#x2F;cateol&#x2F;p&#x2F;15303986.html 安装完成后，启动界面如下，可根据自己的需求进行修改     Vscode相关使用教程：https:&#x2F;&#x2F;gee">
+    <meta name="description" content="VSCode下的editorconfig使用Vscode如何使用editorconfigEditorConfig插件不是所有编辑器都默认支持，如Vscode需要自行下载，而webstrom默认支持，我们可以在扩展中下载EditorConfig for VS Code。  在当前项目的根目录下添加.editorconfig文件，如下。  可以根据个人需求编辑风格的具体界面。  editorconfi">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Vscode安装、配置与使用">
-<meta property="og:url" content="http://example.com/2022/10/16/Vscode%E5%AE%89%E8%A3%85%E3%80%81%E9%85%8D%E7%BD%AE%E4%B8%8E%E4%BD%BF%E7%94%A8/index.html">
+<meta property="og:title" content="Have A Nice Day!">
+<meta property="og:url" content="http://example.com/2022/12/12/VSCode%E4%B8%8B%E7%9A%84editorconfig%E4%BD%BF%E7%94%A8/index.html">
 <meta property="og:site_name" content="Have A Nice Day!">
-<meta property="og:description" content="VSCode安装、配置与使用 Vscode的 安装与基本配置   官方下载网址：https:&#x2F;&#x2F;code.visualstudio.com&#x2F;download# 注意路径设置、环境变量配置，安装教程：https:&#x2F;&#x2F;www.cnblogs.com&#x2F;cateol&#x2F;p&#x2F;15303986.html 安装完成后，启动界面如下，可根据自己的需求进行修改     Vscode相关使用教程：https:&#x2F;&#x2F;gee">
+<meta property="og:description" content="VSCode下的editorconfig使用Vscode如何使用editorconfigEditorConfig插件不是所有编辑器都默认支持，如Vscode需要自行下载，而webstrom默认支持，我们可以在扩展中下载EditorConfig for VS Code。  在当前项目的根目录下添加.editorconfig文件，如下。  可以根据个人需求编辑风格的具体界面。  editorconfi">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://example.com/2022/10/16/Vscode%E5%AE%89%E8%A3%85%E3%80%81%E9%85%8D%E7%BD%AE%E4%B8%8E%E4%BD%BF%E7%94%A8/1.png">
-<meta property="og:image" content="http://example.com/2022/10/16/Vscode%E5%AE%89%E8%A3%85%E3%80%81%E9%85%8D%E7%BD%AE%E4%B8%8E%E4%BD%BF%E7%94%A8/2.png">
-<meta property="og:image" content="http://example.com/2022/10/16/Vscode%E5%AE%89%E8%A3%85%E3%80%81%E9%85%8D%E7%BD%AE%E4%B8%8E%E4%BD%BF%E7%94%A8/3.gif">
-<meta property="og:image" content="http://example.com/2022/10/16/Vscode%E5%AE%89%E8%A3%85%E3%80%81%E9%85%8D%E7%BD%AE%E4%B8%8E%E4%BD%BF%E7%94%A8/4.png">
-<meta property="og:image" content="http://example.com/2022/10/16/Vscode%E5%AE%89%E8%A3%85%E3%80%81%E9%85%8D%E7%BD%AE%E4%B8%8E%E4%BD%BF%E7%94%A8/5.png">
-<meta property="og:image" content="http://example.com/2022/10/16/Vscode%E5%AE%89%E8%A3%85%E3%80%81%E9%85%8D%E7%BD%AE%E4%B8%8E%E4%BD%BF%E7%94%A8/6.png">
-<meta property="article:published_time" content="2022-10-16T15:20:55.000Z">
-<meta property="article:modified_time" content="2022-10-16T15:38:33.309Z">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2022/png/32629723/1665930184934-f5565756-7b8b-475e-907d-00041d700aea.png">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2022/png/32629723/1665930996115-e17e2af2-2a10-4877-b0eb-f848efd0a2ed.png">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2022/png/32629723/1665931355816-a833159c-5270-45ec-ae0d-f7595a09024c.png">
+<meta property="article:published_time" content="2022-12-12T13:58:13.782Z">
+<meta property="article:modified_time" content="2022-12-12T12:55:29.232Z">
 <meta property="article:author" content="code black-ball">
 <meta property="article:tag" content="hexo,node,博客">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://example.com/2022/10/16/Vscode%E5%AE%89%E8%A3%85%E3%80%81%E9%85%8D%E7%BD%AE%E4%B8%8E%E4%BD%BF%E7%94%A8/1.png">
+<meta name="twitter:image" content="https://cdn.nlark.com/yuque/0/2022/png/32629723/1665930184934-f5565756-7b8b-475e-907d-00041d700aea.png">
   
   
   
-  <title>Vscode安装、配置与使用 - Have A Nice Day!</title>
+  <title>Have A Nice Day!</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -203,7 +200,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="Vscode安装、配置与使用"></span>
+            <span id="subtitle" data-typed-text=""></span>
           
         </div>
 
@@ -214,8 +211,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2022-10-16 23:20" pubdate>
-          2022年10月16日 晚上
+        <time datetime="2022-12-12 21:58" pubdate>
+          2022年12月12日 晚上
         </time>
       </span>
     
@@ -226,7 +223,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          2.2k 字
+          703 字
         
       </span>
     
@@ -237,7 +234,7 @@
         
         
         
-          19 分钟
+          6 分钟
         
       </span>
     
@@ -275,78 +272,18 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">Vscode安装、配置与使用</h1>
+            <h1 style="display: none"></h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="VSCode安装、配置与使用"><a href="#VSCode安装、配置与使用" class="headerlink" title="VSCode安装、配置与使用"></a>VSCode安装、配置与使用</h1><ul>
-<li><p><strong>Vscode的 安装与基本配置</strong></p>
-</li>
-<li><ul>
-<li>官方下载网址：<a target="_blank" rel="noopener" href="https://code.visualstudio.com/download#">https://code.visualstudio.com/download#</a></li>
-<li>注意路径设置、环境变量配置，安装教程：<a target="_blank" rel="noopener" href="https://www.cnblogs.com/cat-eol/p/15303986.html">https://www.cnblogs.com/cateol/p/15303986.html</a></li>
-<li>安装完成后，启动界面如下，可根据自己的需求进行修改</li>
-</ul>
-</li>
-</ul>
-<p><img src="/2022/10/16/Vscode%E5%AE%89%E8%A3%85%E3%80%81%E9%85%8D%E7%BD%AE%E4%B8%8E%E4%BD%BF%E7%94%A8/1.png" srcset="/img/loading.gif" lazyload alt="1"></p>
-<p>Vscode相关使用教程：<a target="_blank" rel="noopener" href="https://geek-docs.com/vscode/vscode-tutorials/introduction-to-vscode.html">https://geek-docs.com/vscode/vscode-tutorials/introduction-to-vscode.html</a></p>
-<ul>
-<li><strong>扩展与插件</strong></li>
-</ul>
-<p>点击拓展即可搜索想安装的插件并进行下载，界面如下，这里已经装了部分插件</p>
-<p><img src="/2022/10/16/Vscode%E5%AE%89%E8%A3%85%E3%80%81%E9%85%8D%E7%BD%AE%E4%B8%8E%E4%BD%BF%E7%94%A8/2.png" srcset="/img/loading.gif" lazyload alt="2"></p>
-<p><strong>相关插件介绍与使用：</strong></p>
-<ul>
-<li><ul>
-<li>Chinese (Simplified) (简体中文) Language Pack for Visual Studio Code</li>
-<li>Emmet：<a target="_blank" rel="noopener" href="https://www.cnblogs.com/leeke98/p/11208878.html">https://www.cnblogs.com/leeke98/p/11208878.html</a></li>
-<li>Better-Comments：<a target="_blank" rel="noopener" href="https://www.cnblogs.com/suwanbin/p/13263732.html">https://www.cnblogs.com/suwanbin/p/13263732.html</a></li>
-<li>Auto Rename Tag：<a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/2111838">https://cloud.tencent.com/developer/article/2111838</a></li>
-<li>Live-Server：<a target="_blank" rel="noopener" href="https://www.cnblogs.com/xiaqiuchu/articles/13338716.html">https://www.cnblogs.com/xiaqiuchu/articles/13338716.html</a></li>
-<li>Beautify：格式化html、css、js，vue里配置方法与快捷键：<a target="_blank" rel="noopener" href="https://blog.csdn.net/jiandan1127/article/details/85958965">https://blog.csdn.net/jiandan1127/article/details/85958965</a></li>
-<li>CSS Peek：用于快速查看元素上的CSS样式	<a target="_blank" rel="noopener" href="https://blog.csdn.net/fd2025/article/details/124462556">https://blog.csdn.net/fd2025/article/details/124462556</a></li>
-<li>Markdown Preview Enhanced：<a target="_blank" rel="noopener" href="https://www.cnblogs.com/shanzhiming/p/10668276.html">https://www.cnblogs.com/shanzhiming/p/10668276.html</a></li>
-</ul>
-</li>
-</ul>
-<p><strong>关于snippets的说明：</strong></p>
-<p>snippets（代码块），在我们日常工作中存在大量重复代码编写，这时可以使用snippets直接调用已经封装好的模板代码，这样做能极大提高编程效率。</p>
-<p><img src="/2022/10/16/Vscode%E5%AE%89%E8%A3%85%E3%80%81%E9%85%8D%E7%BD%AE%E4%B8%8E%E4%BD%BF%E7%94%A8/3.gif" srcset="/img/loading.gif" lazyload alt="3"></p>
-<p>另外，关于Vscode snippets的相关使用：<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/a60b320fb197">https://www.jianshu.com/p/a60b320fb197</a></p>
-<p>​                   <a target="_blank" rel="noopener" href="https://www.php.cn/tool/vscode/489259.html">https://www.php.cn/tool/vscode/489259.html</a></p>
-<p><strong>一些今后可能会用到的snippets插件：</strong></p>
-<ul>
-<li><ul>
-<li>JavaScript(ES6) code snippets：ES6语法智能提示，以及快速输入，不仅仅支持.js，还支持.ts，.jsx，.tsx，.html，.vue，省去了配置其支持各种包含js代码文件的时间。</li>
-<li>Vue 3 Snippets：包含了所有的Vue.js 2和Vue.js 3的api对应的代码片段</li>
-<li>Vue Vscode Snippets：<a target="_blank" rel="noopener" href="https://www.its301.com/article/qq_41107231/117195087">https://www.its301.com/article/qq_41107231/117195087</a></li>
-<li>Simple React Snippets：<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/c141b89e5808">https://www.jianshu.com/p/c141b89e5808</a></li>
-</ul>
-</li>
-<li><p><strong>editorconfig 文件的配置和使用</strong></p>
-</li>
-<li><ul>
-<li><strong>editorconfig文件是什么？</strong></li>
-</ul>
-</li>
-</ul>
-<p>不同的开发人员，不同的编辑器，有不同的编码风格，EditorConfig就是用来协同团队开发人员之间的代码的风格及样式规范化的一个工具，.editorconfig正是它的默认配置文件，编辑器可以读取配置文件并以此来格式化代码。</p>
-<ul>
-<li><ul>
-<li><strong>Vscode如何使用editorconfig</strong></li>
-</ul>
-</li>
-</ul>
-<p>EditorConfig插件不是所有编辑器都默认支持，如Vscode需要自行下载，而webstrom默认支持，我们可以在扩展中下载EditorConfig for VS Code。</p>
-<p><img src="/2022/10/16/Vscode%E5%AE%89%E8%A3%85%E3%80%81%E9%85%8D%E7%BD%AE%E4%B8%8E%E4%BD%BF%E7%94%A8/4.png" srcset="/img/loading.gif" lazyload alt="4"></p>
+                <h1 id="VSCode下的editorconfig使用"><a href="#VSCode下的editorconfig使用" class="headerlink" title="VSCode下的editorconfig使用"></a>VSCode下的editorconfig使用</h1><h2 id="Vscode如何使用editorconfig"><a href="#Vscode如何使用editorconfig" class="headerlink" title="Vscode如何使用editorconfig"></a><strong>Vscode如何使用editorconfig</strong></h2><p>EditorConfig插件不是所有编辑器都默认支持，如Vscode需要自行下载，而webstrom默认支持，我们可以在扩展中下载EditorConfig for VS Code。</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2022/png/32629723/1665930184934-f5565756-7b8b-475e-907d-00041d700aea.png" srcset="/img/loading.gif" lazyload alt="img"></p>
 <p>在当前项目的根目录下添加.editorconfig文件，如下。</p>
-<p><img src="/2022/10/16/Vscode%E5%AE%89%E8%A3%85%E3%80%81%E9%85%8D%E7%BD%AE%E4%B8%8E%E4%BD%BF%E7%94%A8/5.png" srcset="/img/loading.gif" lazyload alt="5"></p>
+<p><img src="https://cdn.nlark.com/yuque/0/2022/png/32629723/1665930996115-e17e2af2-2a10-4877-b0eb-f848efd0a2ed.png" srcset="/img/loading.gif" lazyload alt="img"></p>
 <p>可以根据个人需求编辑风格的具体界面。</p>
-<p><img src="/2022/10/16/Vscode%E5%AE%89%E8%A3%85%E3%80%81%E9%85%8D%E7%BD%AE%E4%B8%8E%E4%BD%BF%E7%94%A8/6.png" srcset="/img/loading.gif" lazyload alt="6"></p>
-<p><strong>editorconfig相关编码属性：</strong></p>
-<ul>
+<p><img src="https://cdn.nlark.com/yuque/0/2022/png/32629723/1665931355816-a833159c-5270-45ec-ae0d-f7595a09024c.png" srcset="/img/loading.gif" lazyload alt="img"></p>
+<h2 id="editorconfig相关编码属性："><a href="#editorconfig相关编码属性：" class="headerlink" title="editorconfig相关编码属性："></a><strong>editorconfig相关编码属性：</strong></h2><ul>
 <li>root：表示是最顶层的配置文件，发现为true时，才会停止查找.editorconfig文件</li>
 <li>indent_style：设置缩进风格，可选值有制表符tab和空格space</li>
 <li>indent_size：设置缩进空格数，一般为整数2或4</li>
@@ -356,8 +293,7 @@
 <li>trim_trailing_whitespace：是否删除行尾的空格，可为true和false</li>
 <li>end_of_line设置换行符格式，可选值lf(一般为它)、cr、crlf</li>
 </ul>
-<p><strong>与editorconfig相似的代码整洁工具：</strong></p>
-<ul>
+<h2 id="与editorconfig相似的代码整洁工具："><a href="#与editorconfig相似的代码整洁工具：" class="headerlink" title="与editorconfig相似的代码整洁工具："></a><strong>与editorconfig相似的代码整洁工具：</strong></h2><ul>
 <li>ESLint：<a target="_blank" rel="noopener" href="https://juejin.cn/post/7012798266089668645">https://juejin.cn/post/7012798266089668645</a></li>
 <li>Prettier：<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/18999f6e1668">https://www.jianshu.com/p/18999f6e1668</a></li>
 </ul>
@@ -379,8 +315,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>Vscode安装、配置与使用</div>
-      <div>http://example.com/2022/10/16/Vscode安装、配置与使用/</div>
+      <div></div>
+      <div>http://example.com/2022/12/12/VSCode下的editorconfig使用/</div>
     </div>
     <div class="license-meta">
       
@@ -392,7 +328,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2022年10月16日</div>
+          <div>2022年12月12日</div>
         </div>
       
       
@@ -424,7 +360,7 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2022/12/12/Snippets/" title="">
+                      <a href="/2022/12/12/%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/" title="">
                         <i class="iconfont icon-arrowleft"></i>
                         <span class="hidden-mobile"></span>
                         <span class="visible-mobile">上一篇</span>
@@ -434,8 +370,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2022/09/26/Hexo%E6%90%AD%E5%BB%BA%E6%AD%A5%E9%AA%A4/" title="hexo的初级搭建以及部署到github page上">
-                        <span class="hidden-mobile">hexo的初级搭建以及部署到github page上</span>
+                      <a href="/2022/12/12/Snippets/" title="">
+                        <span class="hidden-mobile"></span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

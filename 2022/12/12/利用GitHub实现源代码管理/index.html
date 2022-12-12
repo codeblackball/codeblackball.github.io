@@ -1,0 +1,734 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/jerry.png">
+  <link rel="icon" href="/img/jerry.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="code black-ball">
+  <meta name="keywords" content="hexo,node,博客">
+  
+    <meta name="description" content="利用GitHub实现源代码管理VSCode的侧边栏提供了源代码管理这个选项，使用它能很好的帮助我们使用git进行管理，这里介绍下VSCode运用GitHub实现源代码管理  准备工具安装git并添加到环境变量，安装VSCode Git详细安装过程：https:&#x2F;&#x2F;blog.csdn.net&#x2F;qq_43715354&#x2F;article&#x2F;details&#x2F;108638061%2">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Have A Nice Day!">
+<meta property="og:url" content="http://example.com/2022/12/12/%E5%88%A9%E7%94%A8GitHub%E5%AE%9E%E7%8E%B0%E6%BA%90%E4%BB%A3%E7%A0%81%E7%AE%A1%E7%90%86/index.html">
+<meta property="og:site_name" content="Have A Nice Day!">
+<meta property="og:description" content="利用GitHub实现源代码管理VSCode的侧边栏提供了源代码管理这个选项，使用它能很好的帮助我们使用git进行管理，这里介绍下VSCode运用GitHub实现源代码管理  准备工具安装git并添加到环境变量，安装VSCode Git详细安装过程：https:&#x2F;&#x2F;blog.csdn.net&#x2F;qq_43715354&#x2F;article&#x2F;details&#x2F;108638061%2">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2022/jpeg/32629723/1670491788205-be134ab9-8958-4537-9859-0c2a0e3eb274.jpeg">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2022/jpeg/32629723/1670491806221-7e62918b-c4aa-44f7-a2a7-a238817f7f90.jpeg">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2022/png/32629723/1670491986021-87def808-c776-47b2-9dc9-d2696d3450d4.png">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2022/jpeg/32629723/1670492032817-d85827bb-1642-4270-ac9d-1877c5ed179d.jpeg">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2022/jpeg/32629723/1670492125353-fc8f9b18-d4f8-487e-a0b0-1e66fda06dbf.jpeg">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2022/jpeg/32629723/1670492248998-f99d0417-e0d3-43ca-a1d5-154e3741d6c4.jpeg">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2022/jpeg/32629723/1670492363263-127b5a28-6a2b-49a0-8eaa-4af821e4bbad.jpeg">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2022/jpeg/32629723/1670492578759-943f623e-57c3-4594-b7e8-264afe08d283.jpeg">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2022/jpeg/32629723/1670492672337-a4da73ea-f3dc-45f9-a974-a5d320dab88c.jpeg">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2022/jpeg/32629723/1670492701099-4ea64275-cc97-4f04-a5d2-8d349eac997f.jpeg">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2022/jpeg/32629723/1670492782003-43b1c8d9-8a1b-462e-9848-f48e6163cb30.jpeg">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2022/jpeg/32629723/1670493159430-4118e954-afb4-4535-bcc9-fe66ca84825e.jpeg">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2022/jpeg/32629723/1670493201364-1abcd655-a5b1-46a9-8e55-4e1100317350.jpeg">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2022/jpeg/32629723/1670493362259-7ce7ab49-3304-4175-8c6d-157779b8f872.jpeg">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2022/jpeg/32629723/1670493463163-afb285c7-93f6-4b27-ae4c-174d1327199c.jpeg">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2022/jpeg/32629723/1670493598602-358c6ef1-5c21-43fd-ba2c-4a2f09708398.jpeg">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2022/jpeg/32629723/1670496895480-3a9c63fb-d5e9-4838-bf22-0ef764cb8308.jpeg">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2022/jpeg/32629723/1670496927540-bd7a70dd-ee6c-40c2-9e2f-318dc8cddcde.jpeg">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2022/png/32629723/1670497010244-a322f98c-2c94-47dc-a01e-ebf8620dad70.png">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2022/jpeg/32629723/1670497043258-4d304038-0c0e-4e33-b906-71d9fa4e5689.jpeg">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2022/jpeg/32629723/1670497068435-d0b87d48-8361-4409-b3be-6be550f33a4e.jpeg">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2022/png/32629723/1670497078158-ab9e09a9-bbef-430f-b9b8-7408a1799a75.png">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2022/jpeg/32629723/1670497163127-04eea8dd-ef93-4bcd-a637-b37ebffd1dda.jpeg">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2022/jpeg/32629723/1670497193066-fc14ed9f-9e9c-4092-a4a8-e14b5b05870c.jpeg">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2022/jpeg/32629723/1670497236343-ea556763-f585-47fe-8727-a076e9fa881d.jpeg">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2022/jpeg/32629723/1670497338039-e174b40e-b68e-454d-8bef-5c0fe379b16b.jpeg">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2022/jpeg/32629723/1670497370868-47a0f3d0-9997-4c55-966e-764a8d8ac65c.jpeg">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2022/jpeg/32629723/1670497516023-94f6939b-504d-483f-a135-f39c0d129721.jpeg">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2022/png/32629723/1670497523755-e3ea579c-9fca-475d-87e1-c8ac3816ed49.png">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2022/jpeg/32629723/1670497560512-bf84f074-fa3d-4d14-a8b0-a40165964f2d.jpeg">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2022/jpeg/32629723/1670497639956-b806ed0b-7983-47a1-aeee-d521ab130fbb.jpeg">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2022/png/32629723/1670497693968-741646d4-1f54-49c9-a9c6-79650e079acd.png">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2022/jpeg/32629723/1670497848717-4c45c050-f8ce-4b24-b85a-062df43e53b4.jpeg">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2022/jpeg/32629723/1670491788205-be134ab9-8958-4537-9859-0c2a0e3eb274.jpeg?x-oss-process=image/resize,w_533,limit_0/interlace,1">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2022/jpeg/32629723/1670497961707-e52ac545-10af-48ef-8304-b391cff0be18.jpeg">
+<meta property="article:published_time" content="2022-12-12T13:58:13.788Z">
+<meta property="article:modified_time" content="2022-12-12T12:54:00.303Z">
+<meta property="article:author" content="code black-ball">
+<meta property="article:tag" content="hexo,node,博客">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://cdn.nlark.com/yuque/0/2022/jpeg/32629723/1670491788205-be134ab9-8958-4537-9859-0c2a0e3eb274.jpeg">
+  
+  
+  
+  <title>Have A Nice Day!</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.3","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Welcome！</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/tom.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text=""></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-12-12 21:58" pubdate>
+          2022年12月12日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          1.6k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          14 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none"></h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="利用GitHub实现源代码管理"><a href="#利用GitHub实现源代码管理" class="headerlink" title="利用GitHub实现源代码管理"></a>利用GitHub实现源代码管理</h1><p>VSCode的侧边栏提供了源代码管理这个选项，使用它能很好的帮助我们使用git进行管理，这里介绍下VSCode运用GitHub实现源代码管理</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2022/jpeg/32629723/1670491788205-be134ab9-8958-4537-9859-0c2a0e3eb274.jpeg" srcset="/img/loading.gif" lazyload alt="img"></p>
+<h2 id="准备工具"><a href="#准备工具" class="headerlink" title="准备工具"></a>准备工具</h2><p>安装git并添加到环境变量，安装VSCode</p>
+<p>Git详细安装过程：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_43715354/article/details/108638061">https://blog.csdn.net/qq_43715354&#x2F;article&#x2F;details&#x2F;108638061%20</a></p>
+<p>VSCode安装过程：<a target="_blank" rel="noopener" href="https://blog.csdn.net/m0_48565215/article/details/125138368%EF%BC%88%E4%B9%9F%E5%8F%AF%E5%8F%82%E7%85%A7%E5%89%8D%E6%96%87%EF%BC%89">https://blog.csdn.net/m0_48565215/article/details/125138368（也可参照前文）</a></p>
+<h2 id="基本流程"><a href="#基本流程" class="headerlink" title="基本流程"></a>基本流程</h2><h3 id="创建仓库"><a href="#创建仓库" class="headerlink" title="创建仓库"></a>创建仓库</h3><p>进入github官网，注册，登录，在右上角添加一个repository</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2022/jpeg/32629723/1670491806221-7e62918b-c4aa-44f7-a2a7-a238817f7f90.jpeg" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p>下面是一个 repository 最基本的信息，我们需要清楚了解每一个都是什么意思。配置完每个参数之后，我们就可以创建仓库。</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2022/png/32629723/1670491986021-87def808-c776-47b2-9dc9-d2696d3450d4.png" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p>生成仓库的基本结构</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2022/jpeg/32629723/1670492032817-d85827bb-1642-4270-ac9d-1877c5ed179d.jpeg" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p>在本地创建一个文件夹，用来接受test这个仓库内部的文件，也就是clone操作</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2022/jpeg/32629723/1670492125353-fc8f9b18-d4f8-487e-a0b0-1e66fda06dbf.jpeg" srcset="/img/loading.gif" lazyload alt="img"></p>
+<h3 id="Git安装"><a href="#Git安装" class="headerlink" title="Git安装"></a>Git安装</h3><p>安装完git之后重启VSCode，源代码管理栏就会变成如下情况</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2022/jpeg/32629723/1670492248998-f99d0417-e0d3-43ca-a1d5-154e3741d6c4.jpeg" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p>配置账号和密码，全局</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs plain">git config --global user.email &quot;you@example.com&quot;<br>git config --global user.name &quot;Your Name&quot;<br></code></pre></td></tr></table></figure>
+
+<p><img src="https://cdn.nlark.com/yuque/0/2022/jpeg/32629723/1670492363263-127b5a28-6a2b-49a0-8eaa-4af821e4bbad.jpeg" srcset="/img/loading.gif" lazyload alt="img"></p>
+<h3 id="VSCode绑定GitHub"><a href="#VSCode绑定GitHub" class="headerlink" title="VSCode绑定GitHub"></a>VSCode绑定GitHub</h3><p>点击“发布到GitHub”，然后会跳转到网页处，输入账号密码登录GitHub</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2022/jpeg/32629723/1670492578759-943f623e-57c3-4594-b7e8-264afe08d283.jpeg" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p>点击 Continue ，这样我们的VSCode就会和GitHub关联起来了，然后点击打开</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2022/jpeg/32629723/1670492672337-a4da73ea-f3dc-45f9-a974-a5d320dab88c.jpeg" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p>这时候会跳回 VSCode，询问是否关联起来，点击 Open</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2022/jpeg/32629723/1670492701099-4ea64275-cc97-4f04-a5d2-8d349eac997f.jpeg" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p>关联成功之后就可以看到账户里连接到了GitHub</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2022/jpeg/32629723/1670492782003-43b1c8d9-8a1b-462e-9848-f48e6163cb30.jpeg" srcset="/img/loading.gif" lazyload alt="img"></p>
+<h3 id="基础知识"><a href="#基础知识" class="headerlink" title="基础知识"></a>基础知识</h3><p>clone意思就是把GitHub上的仓库文件，克隆到本地，方便我们进行代码的修改或迭代</p>
+<p>点击“初始化仓库”，这时候就会切换界面到达监视区</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2022/jpeg/32629723/1670493159430-4118e954-afb4-4535-bcc9-fe66ca84825e.jpeg" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p><img src="https://cdn.nlark.com/yuque/0/2022/jpeg/32629723/1670493201364-1abcd655-a5b1-46a9-8e55-4e1100317350.jpeg" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p>最上栏有四个选项，分别为查看形式、提交、刷新、视图和更多操作</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2022/jpeg/32629723/1670493362259-7ce7ab49-3304-4175-8c6d-157779b8f872.jpeg" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p>查看形式：可以选择文件排列形式</p>
+<p>提交：用来提交版本信息到达本地仓库</p>
+<p>刷新：刷新当前文件修改的内容</p>
+<p>视图和更多操作的界面如下</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2022/jpeg/32629723/1670493463163-afb285c7-93f6-4b27-ae4c-174d1327199c.jpeg" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p>拉取：从仓库获得文件</p>
+<p>推送：文件上传至仓库</p>
+<p>克隆：仓库整体克隆到本地中</p>
+<p>整个界面最下方一栏的相关内容解释</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2022/jpeg/32629723/1670493598602-358c6ef1-5c21-43fd-ba2c-4a2f09708398.jpeg" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p>分枝结构：名为master的分枝结构</p>
+<p>云端信息：上传与下载的次数</p>
+<p>问题：警告与报错</p>
+<h3 id="代码上传"><a href="#代码上传" class="headerlink" title="代码上传"></a>代码上传</h3><h4 id="Clone"><a href="#Clone" class="headerlink" title="Clone"></a>Clone</h4><p>整体仓库克隆到本地当中</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2022/jpeg/32629723/1670496895480-3a9c63fb-d5e9-4838-bf22-0ef764cb8308.jpeg" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p><img src="https://cdn.nlark.com/yuque/0/2022/jpeg/32629723/1670496927540-bd7a70dd-ee6c-40c2-9e2f-318dc8cddcde.jpeg" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p>权限问题，点击允许，将会跳到一个GitHub授权画面，同理VSCode默认也要授权</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2022/png/32629723/1670497010244-a322f98c-2c94-47dc-a01e-ebf8620dad70.png" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p><img src="https://cdn.nlark.com/yuque/0/2022/jpeg/32629723/1670497043258-4d304038-0c0e-4e33-b906-71d9fa4e5689.jpeg" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p><img src="https://cdn.nlark.com/yuque/0/2022/jpeg/32629723/1670497068435-d0b87d48-8361-4409-b3be-6be550f33a4e.jpeg" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p><img src="https://cdn.nlark.com/yuque/0/2022/png/32629723/1670497078158-ab9e09a9-bbef-430f-b9b8-7408a1799a75.png" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p>由于我建立的仓库是私有的，所以最好手动输全，由GitHub 用户名&#x2F;工程名</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2022/jpeg/32629723/1670497163127-04eea8dd-ef93-4bcd-a637-b37ebffd1dda.jpeg" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p><img src="https://cdn.nlark.com/yuque/0/2022/jpeg/32629723/1670497193066-fc14ed9f-9e9c-4092-a4a8-e14b5b05870c.jpeg" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p>询问是否打开仓库，点击 Open，将会重启 VSCode进入克隆好的仓库内部</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2022/jpeg/32629723/1670497236343-ea556763-f585-47fe-8727-a076e9fa881d.jpeg" srcset="/img/loading.gif" lazyload alt="img"></p>
+<h4 id="Commit"><a href="#Commit" class="headerlink" title="Commit"></a>Commit</h4><p>clone 成功之后，我们就可以在上面进行代码的修改等操作了，操作完之后，想要再保存版本，我们就需要分为两步，第一步，把代码信息上传到本地库当中，有两个隐藏文件是会保存版本信息的。第二步，保存的是本地的信息，我们还需要把本地库上传到 GitHub上面</p>
+<p>新建两个文件，里面无内容，然后 commit</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2022/jpeg/32629723/1670497338039-e174b40e-b68e-454d-8bef-5c0fe379b16b.jpeg" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p><img src="https://cdn.nlark.com/yuque/0/2022/jpeg/32629723/1670497370868-47a0f3d0-9997-4c55-966e-764a8d8ac65c.jpeg" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p>增加版本信息，写越全越好，方便后期主机回头查看，之前显示已修改的文件此时同步到本地仓库了</p>
+<h4 id="push"><a href="#push" class="headerlink" title="push"></a>push</h4><p>接下来准备把本地仓库内容，Push 到GitHub上面，最终我们可以在 GitHub 网站看到自己的库，如果你只是做个人的开发，可以选择不 Push，直接在把库保存在本地</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2022/jpeg/32629723/1670497516023-94f6939b-504d-483f-a135-f39c0d129721.jpeg" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p><img src="https://cdn.nlark.com/yuque/0/2022/png/32629723/1670497523755-e3ea579c-9fca-475d-87e1-c8ac3816ed49.png" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p><img src="https://cdn.nlark.com/yuque/0/2022/jpeg/32629723/1670497560512-bf84f074-fa3d-4d14-a8b0-a40165964f2d.jpeg" srcset="/img/loading.gif" lazyload alt="img"></p>
+<h3 id="回滚版本"><a href="#回滚版本" class="headerlink" title="回滚版本"></a>回滚版本</h3><p>之前我们就有记录了版本信息，默认也会给我们添加一个版本号，那如何查找我们版本号呢？通过 Git 终端，输入指令查找提交记录</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plain">git reflog<br></code></pre></td></tr></table></figure>
+
+<p>黄色的字，就是当时提交的版本号</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2022/jpeg/32629723/1670497639956-b806ed0b-7983-47a1-aeee-d521ab130fbb.jpeg" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p>然后我们在输入对应想恢复的版本号，代码就能够回去了</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plain">git reset --hard 版本号<br></code></pre></td></tr></table></figure>
+
+<p><img src="https://cdn.nlark.com/yuque/0/2022/png/32629723/1670497693968-741646d4-1f54-49c9-a9c6-79650e079acd.png" srcset="/img/loading.gif" lazyload alt="img"></p>
+<h2 id="关闭源代码管理"><a href="#关闭源代码管理" class="headerlink" title="关闭源代码管理"></a>关闭源代码管理</h2><p>因为下载的项目很多，导致源代码要管理5000个文件，一旦改动一个文件，就导致vscode假死，卡住不动，这里介绍一个简单的方法</p>
+<p>打开使用了源代码管理的文件夹，删除.git文件，重启VSCode</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2022/jpeg/32629723/1670497848717-4c45c050-f8ce-4b24-b85a-062df43e53b4.jpeg" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p>此时源代码管理栏就会变成如下样式</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2022/jpeg/32629723/1670491788205-be134ab9-8958-4537-9859-0c2a0e3eb274.jpeg?x-oss-process=image/resize,w_533,limit_0/interlace,1" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p>你可以在设置中关闭自动搜索</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2022/jpeg/32629723/1670497961707-e52ac545-10af-48ef-8304-b391cff0be18.jpeg" srcset="/img/loading.gif" lazyload alt="img"></p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div></div>
+      <div>http://example.com/2022/12/12/利用GitHub实现源代码管理/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>code black-ball</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2022年12月12日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/12/12/%E5%85%A5%E9%97%A8%E4%BD%BF%E7%94%A8/" title="">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile"></span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/12/12/%E6%8F%92%E4%BB%B6%E6%8E%A8%E8%8D%90/" title="">
+                        <span class="hidden-mobile"></span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
